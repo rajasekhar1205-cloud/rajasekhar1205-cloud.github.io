@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Rajasekhar | Mobile CI/CD Specialist</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#04070f;
+  --bg1:#080d1a;
+  --bg2:#0c1220;
+  --bg3:#111827;
+  --teal:#00e5b8;
+  --teal2:#00c9a7;
+  --blue:#3b9eff;
+  --violet:#8b5cf6;
+  --text:#eef2f8;
+  --muted:#6b7fa3;
+  --muted2:#4a5568;
+  --border:rgba(255,255,255,0.07);
+  --border2:rgba(0,229,184,0.2);
+  --font-display:'Syne',sans-serif;
+  --font-body:'Inter',sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);overflow-x:hidden;font-size:16px;line-height:1.7}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--teal2);border-radius:2px}
+
+#particles{position:fixed;inset:0;z-index:0;pointer-events:none}
+
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem 5vw;
+  background:rgba(4,7,15,0.7);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  transition:all 0.3s;
+}
+nav.scrolled{background:rgba(4,7,15,0.95);box-shadow:0 4px 30px rgba(0,0,0,0.4)}
+.nav-logo{
+  font-family:var(--font-display);font-size:1.15rem;font-weight:800;
+  color:var(--text);letter-spacing:-0.02em;text-decoration:none;
+  display:flex;align-items:center;gap:0.5rem;
+}
+.nav-logo-dot{width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 10px var(--teal);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.4);opacity:0.7}}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{color:var(--muted);font-size:0.88rem;font-weight:500;text-decoration:none;transition:color 0.2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--teal);transform:scaleX(0);transition:transform 0.2s}
+.nav-links a:hover{color:var(--text)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-btn{background:linear-gradient(135deg,var(--teal),var(--blue));color:#04070f;padding:0.55rem 1.4rem;border-radius:8px;font-weight:700;font-size:0.85rem;text-decoration:none;transition:all 0.2s;letter-spacing:0.02em}
+.nav-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,229,184,0.35)}
+
+.avail-bar{
+  position:relative;z-index:1;margin-top:0;
+  background:linear-gradient(90deg,rgba(0,229,184,0.08),rgba(59,158,255,0.05));
+  border-bottom:1px solid rgba(0,229,184,0.12);
+  padding:0.75rem 5vw;
+  display:flex;align-items:center;justify-content:center;gap:1rem;
+  font-size:0.82rem;
+}
+.avail-dot{width:7px;height:7px;border-radius:50%;background:#00e676;animation:pulse 1.5s infinite;flex-shrink:0}
+.avail-text{color:var(--muted)}
+.avail-text strong{color:var(--teal)}
+
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+  padding:9rem 5vw 5rem;position:relative;z-index:1;
+}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0}
+.orb1{width:500px;height:500px;background:rgba(0,229,184,0.06);top:-100px;left:-150px}
+.orb2{width:400px;height:400px;background:rgba(59,158,255,0.05);bottom:0;right:10vw}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:0.6rem;
+  font-family:var(--font-mono);font-size:0.72rem;color:var(--teal);
+  letter-spacing:0.15em;text-transform:uppercase;
+  border:1px solid var(--border2);background:rgba(0,229,184,0.05);
+  padding:0.4rem 0.9rem;border-radius:100px;margin-bottom:2rem;width:fit-content;
+  opacity:0;animation:slideUp 0.6s 0.2s ease forwards;
+}
+.hero-eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:pulse 1.5s infinite}
+.hero h1{
+  font-family:var(--font-display);
+  font-size:clamp(2.8rem,6vw,5.2rem);
+  font-weight:800;line-height:1.05;
+  letter-spacing:-0.03em;max-width:820px;
+  opacity:0;animation:slideUp 0.7s 0.35s ease forwards;
+}
+.hero h1 em{
+  font-style:normal;color:transparent;
+  background:linear-gradient(135deg,var(--teal),var(--blue));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-desc{
+  margin-top:1.75rem;max-width:560px;color:var(--muted);
+  font-size:1.05rem;font-weight:300;line-height:1.75;
+  opacity:0;animation:slideUp 0.7s 0.5s ease forwards;
+}
+.hero-actions{
+  display:flex;gap:1rem;margin-top:2.5rem;flex-wrap:wrap;
+  opacity:0;animation:slideUp 0.7s 0.65s ease forwards;
+}
+.btn-glow{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  background:linear-gradient(135deg,var(--teal),var(--blue));
+  color:#04070f;padding:0.9rem 2rem;border-radius:10px;
+  font-weight:700;font-size:0.95rem;text-decoration:none;
+  transition:all 0.25s;position:relative;overflow:hidden;
+}
+.btn-glow:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,229,184,0.3)}
+.btn-outline{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  border:1px solid var(--border2);color:var(--text);
+  padding:0.9rem 2rem;border-radius:10px;
+  font-weight:500;font-size:0.95rem;text-decoration:none;
+  transition:all 0.25s;background:rgba(0,229,184,0.03);
+}
+.btn-outline:hover{background:rgba(0,229,184,0.08);border-color:var(--teal);transform:translateY(-2px)}
+.hero-trust{
+  display:flex;align-items:center;gap:1.5rem;margin-top:3rem;
+  opacity:0;animation:slideUp 0.7s 0.8s ease forwards;flex-wrap:wrap;
+}
+.trust-label{font-size:0.78rem;color:var(--muted2);font-weight:500}
+.trust-pills{display:flex;gap:0.6rem;flex-wrap:wrap}
+.trust-pill{
+  display:flex;align-items:center;gap:0.4rem;
+  font-size:0.78rem;color:var(--muted);
+  background:var(--bg2);border:1px solid var(--border);
+  padding:0.3rem 0.75rem;border-radius:100px;
+}
+.trust-pill svg{width:14px;height:14px}
+.hero-visual{
+  position:absolute;right:5vw;top:50%;transform:translateY(-50%);
+  width:min(440px,38vw);
+  opacity:0;animation:slideUp 0.8s 1s ease forwards;
+}
+@media(max-width:1000px){.hero-visual{display:none}}
+.terminal-window{
+  background:rgba(8,13,26,0.9);backdrop-filter:blur(20px);
+  border:1px solid var(--border2);border-radius:14px;overflow:hidden;
+  box-shadow:0 30px 80px rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.term-header{
+  background:rgba(255,255,255,0.03);padding:0.7rem 1rem;
+  display:flex;align-items:center;gap:0.5rem;border-bottom:1px solid var(--border);
+}
+.term-dots{display:flex;gap:5px}
+.td{width:11px;height:11px;border-radius:50%}
+.term-title{font-family:var(--font-mono);font-size:0.7rem;color:var(--muted2);margin-left:auto}
+.term-body{padding:1.2rem 1.4rem;font-family:var(--font-mono);font-size:0.75rem;line-height:2}
+.tl{display:flex;gap:0.5rem;align-items:baseline}
+.tp{color:var(--teal);flex-shrink:0}
+.tc{color:#c9d1d9}
+.to{color:var(--muted);padding-left:1.2rem}
+.ts{color:var(--teal)}
+.cursor{display:inline-block;width:7px;height:14px;background:var(--teal);vertical-align:middle;animation:blink 1s step-end infinite}
+@keyframes blink{50%{opacity:0}}
+@keyframes slideUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+.stats{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  background:linear-gradient(180deg,rgba(0,229,184,0.02),transparent);
+}
+.stat-item{
+  padding:2.2rem 2rem;text-align:center;
+  border-right:1px solid var(--border);position:relative;overflow:hidden;
+}
+.stat-item:last-child{border-right:none}
+.stat-item::before{
+  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--teal),transparent);
+}
+.stat-n{
+  font-family:var(--font-display);font-size:2.4rem;font-weight:800;
+  background:linear-gradient(135deg,var(--teal),var(--blue));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.stat-l{font-size:0.82rem;color:var(--muted);margin-top:0.3rem;font-weight:400}
+
+.section{padding:6rem 5vw;position:relative;z-index:1}
+.section-inner{max-width:1200px;margin:0 auto}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  font-family:var(--font-mono);font-size:0.7rem;color:var(--teal);
+  letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1rem;
+}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--teal)}
+.section-title{
+  font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,2.8rem);
+  font-weight:800;letter-spacing:-0.02em;line-height:1.15;margin-bottom:1rem;
+}
+.section-sub{color:var(--muted);max-width:480px;font-weight:300;margin-bottom:3.5rem}
+
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem}
+.svc{
+  background:var(--bg2);border:1px solid var(--border);border-radius:16px;
+  padding:2rem;transition:all 0.3s;cursor:default;position:relative;overflow:hidden;
+}
+.svc::after{
+  content:'';position:absolute;inset:0;border-radius:16px;
+  background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(0,229,184,0.06),transparent 60%);
+  opacity:0;transition:opacity 0.3s;
+}
+.svc:hover::after{opacity:1}
+.svc:hover{border-color:rgba(0,229,184,0.25);transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,0.3)}
+.svc-icon-wrap{
+  width:52px;height:52px;border-radius:14px;
+  background:linear-gradient(135deg,rgba(0,229,184,0.1),rgba(59,158,255,0.05));
+  border:1px solid rgba(0,229,184,0.15);
+  display:flex;align-items:center;justify-content:center;margin-bottom:1.4rem;
+}
+.svc-icon-wrap svg{width:24px;height:24px}
+.svc h3{font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:0.6rem}
+.svc p{color:var(--muted);font-size:0.88rem;line-height:1.65;font-weight:300}
+.svc-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:1.2rem}
+.stag{
+  font-family:var(--font-mono);font-size:0.65rem;
+  background:rgba(59,158,255,0.08);color:var(--blue);
+  border:1px solid rgba(59,158,255,0.15);
+  padding:3px 8px;border-radius:5px;letter-spacing:0.04em;
+}
+.svc-price{
+  margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.price-tag{
+  font-family:var(--font-display);font-size:1.1rem;font-weight:800;
+  background:linear-gradient(90deg,var(--teal),var(--blue));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.price-unit{font-size:0.75rem;color:var(--muted);margin-left:0.25rem;font-family:var(--font-body)}
+.svc-arrow{
+  width:28px;height:28px;border-radius:8px;
+  background:rgba(0,229,184,0.08);border:1px solid rgba(0,229,184,0.15);
+  display:flex;align-items:center;justify-content:center;transition:all 0.2s;
+}
+.svc:hover .svc-arrow{background:var(--teal);border-color:var(--teal)}
+.svc:hover .svc-arrow svg{stroke:#04070f}
+
+.process-bg{background:var(--bg1);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.process-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.process-step{padding:2.5rem 2rem;border-right:1px solid var(--border)}
+.process-step:last-child{border-right:none}
+.step-num-wrap{display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem}
+.step-num{
+  font-family:var(--font-mono);font-size:0.7rem;color:var(--teal);
+  background:rgba(0,229,184,0.08);border:1px solid rgba(0,229,184,0.2);
+  width:32px;height:32px;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;font-weight:600;flex-shrink:0;
+}
+.step-line{flex:1;height:1px;background:linear-gradient(90deg,rgba(0,229,184,0.3),transparent)}
+.process-step h3{font-family:var(--font-display);font-size:1rem;font-weight:700;margin-bottom:0.5rem}
+.process-step p{font-size:0.84rem;color:var(--muted);line-height:1.6;font-weight:300}
+
+.tech-grid{display:flex;flex-wrap:wrap;gap:0.75rem}
+.tech-pill{
+  display:flex;align-items:center;gap:0.6rem;
+  background:var(--bg2);border:1px solid var(--border);
+  padding:0.6rem 1rem;border-radius:10px;font-size:0.82rem;color:var(--muted);
+  transition:all 0.2s;font-weight:500;
+}
+.tech-pill:hover{border-color:var(--border2);color:var(--text);background:rgba(0,229,184,0.05);transform:translateY(-2px)}
+.tech-pill svg{width:18px;height:18px;flex-shrink:0}
+
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem}
+.testi{
+  background:var(--bg2);border:1px solid var(--border);border-radius:16px;
+  padding:1.75rem;transition:all 0.25s;
+}
+.testi:hover{border-color:var(--border2);transform:translateY(-3px)}
+.testi-stars{display:flex;gap:3px;margin-bottom:1rem;font-size:0.9rem;color:#f0a500}
+.testi-text{color:var(--muted);font-size:0.9rem;line-height:1.7;font-weight:300;font-style:italic}
+.testi-text::before{content:'\201C';font-size:1.6rem;color:var(--teal);font-family:var(--font-display);line-height:0;vertical-align:-0.5rem;margin-right:2px}
+.testi-author{display:flex;align-items:center;gap:0.75rem;margin-top:1.4rem}
+.testi-av{
+  width:40px;height:40px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-display);font-size:0.85rem;font-weight:800;
+  color:#04070f;flex-shrink:0;
+}
+.testi-name{font-weight:600;font-size:0.88rem}
+.testi-role{font-size:0.75rem;color:var(--muted2)}
+
+.contact-bg{background:var(--bg1);border-top:1px solid var(--border)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;align-items:start}
+.contact-info-block h2{
+  font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.4rem);
+  font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;
+}
+.contact-info-block p{color:var(--muted);font-weight:300;margin-bottom:2rem;font-size:0.95rem}
+.cinfo{display:flex;align-items:center;gap:0.9rem;margin-bottom:1rem}
+.cinfo-icon{
+  width:38px;height:38px;border-radius:10px;
+  background:rgba(0,229,184,0.07);border:1px solid rgba(0,229,184,0.15);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.cinfo-icon svg{width:16px;height:16px}
+.cinfo-text{font-size:0.88rem}
+.cinfo-text strong{display:block;color:var(--text);font-size:0.9rem}
+.cinfo-text span{color:var(--muted);font-size:0.8rem}
+.contact-socials{display:flex;gap:0.75rem;margin-top:2rem;flex-wrap:wrap}
+.social-btn{
+  display:flex;align-items:center;gap:0.5rem;
+  background:var(--bg2);border:1px solid var(--border);
+  padding:0.55rem 1rem;border-radius:8px;font-size:0.8rem;color:var(--muted);
+  text-decoration:none;transition:all 0.2s;
+}
+.social-btn:hover{border-color:var(--border2);color:var(--teal)}
+.social-btn svg{width:15px;height:15px}
+
+.form-card{
+  background:rgba(8,13,26,0.8);backdrop-filter:blur(20px);
+  border:1px solid var(--border);border-radius:18px;padding:2.5rem;
+}
+.fg{margin-bottom:1.1rem}
+.fg label{
+  display:block;font-family:var(--font-mono);font-size:0.68rem;
+  color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem;
+}
+.fg input,.fg textarea,.fg select{
+  width:100%;background:rgba(255,255,255,0.03);
+  border:1px solid var(--border);border-radius:10px;
+  padding:0.8rem 1rem;color:var(--text);
+  font-family:var(--font-body);font-size:0.9rem;outline:none;
+  transition:border-color 0.2s,background 0.2s;
+  -webkit-appearance:none;
+}
+.fg input::placeholder,.fg textarea::placeholder{color:var(--muted2)}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--teal2);background:rgba(0,229,184,0.03)}
+.fg textarea{resize:vertical;min-height:110px}
+.fg select option{background:#0c1220;color:var(--text)}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.submit{
+  width:100%;background:linear-gradient(135deg,var(--teal),var(--blue));
+  color:#04070f;border:none;border-radius:10px;padding:1rem;
+  font-weight:700;font-size:0.95rem;cursor:pointer;
+  font-family:var(--font-display);letter-spacing:0.02em;
+  transition:all 0.25s;display:flex;align-items:center;justify-content:center;gap:0.5rem;
+  margin-top:0.5rem;
+}
+.submit:hover{transform:translateY(-2px);box-shadow:0 12px 35px rgba(0,229,184,0.3)}
+.submit svg{width:16px;height:16px;transition:transform 0.2s}
+.submit:hover svg{transform:translateX(3px)}
+
+footer{
+  position:relative;z-index:1;padding:3rem 5vw 2rem;
+  border-top:1px solid var(--border);background:var(--bg);
+}
+.footer-inner{
+  max-width:1200px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:1.5rem;
+}
+.footer-logo{font-family:var(--font-display);font-weight:800;color:var(--text);font-size:1rem}
+.footer-logo span{color:var(--teal)}
+.footer-links{display:flex;gap:2rem}
+.footer-links a{font-size:0.82rem;color:var(--muted);text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:var(--teal)}
+.footer-copy{font-size:0.78rem;color:var(--muted2)}
+.footer-badge{
+  display:flex;align-items:center;gap:0.5rem;font-size:0.75rem;color:var(--muted);
+  background:var(--bg2);border:1px solid var(--border);padding:0.4rem 0.8rem;border-radius:8px;
+}
+.footer-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:#00e676;flex-shrink:0;animation:pulse 2s infinite}
+
+@media(max-width:900px){
+  .contact-grid{grid-template-columns:1fr;gap:2.5rem}
+  .fg-row{grid-template-columns:1fr}
+}
+@media(max-width:700px){
+  .nav-links{display:none}
+  .process-step{border-right:none;border-bottom:1px solid var(--border)}
+  .stat-item{border-right:none;border-bottom:1px solid var(--border)}
+  .stat-item:last-child{border-bottom:none}
+}
+</style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+
+<div class="avail-bar" style="margin-top:0;padding-top:0.75rem">
+  <div class="avail-dot"></div>
+  <span class="avail-text"><strong>Available for new projects</strong> — Currently booking for May 2026 onwards</span>
+</div>
+
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-dot"></div>
+    Rajasekhar
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#stack">Stack</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-btn">Hire Me →</a>
+</nav>
+
+<section class="hero">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="hero-eyebrow">
+    <div class="hero-eyebrow-dot"></div>
+    Mobile CI/CD Specialist · Hyderabad, India
+  </div>
+  <h1>Ship your mobile app<br/><em>faster. smarter.</em><br/>without the chaos.</h1>
+  <p class="hero-desc">
+    I design and build bulletproof CI/CD pipelines for iOS &amp; Android using
+    <strong style="color:var(--text);font-weight:500">GitHub Actions</strong> and
+    <strong style="color:var(--text);font-weight:500">Azure DevOps</strong> —
+    so your team ships confidently every sprint.
+  </p>
+  <div class="hero-actions">
+    <a href="#contact" class="btn-glow">
+      Start a Project
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+    <a href="#services" class="btn-outline">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      View Services
+    </a>
+  </div>
+  <div class="hero-trust">
+    <span class="trust-label">Trusted tools:</span>
+    <div class="trust-pills">
+      <span class="trust-pill"><svg viewBox="0 0 24 24" fill="none" stroke="#00e5b8" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>GitHub Actions</span>
+      <span class="trust-pill"><svg viewBox="0 0 24 24" fill="none" stroke="#3b9eff" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>Azure DevOps</span>
+      <span class="trust-pill"><svg viewBox="0 0 24 24" fill="none" stroke="#f0a500" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Fastlane</span>
+      <span class="trust-pill"><svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2M12 12v4M10 14h4"/></svg>App Store / Play Store</span>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="terminal-window">
+      <div class="term-header">
+        <div class="term-dots">
+          <div class="td" style="background:#ff5f57"></div>
+          <div class="td" style="background:#febc2e"></div>
+          <div class="td" style="background:#28c840"></div>
+        </div>
+        <span class="term-title">deploy-mobile.yml · run #247</span>
+      </div>
+      <div class="term-body">
+        <div class="tl"><span class="tp">❯</span><span class="tc"> gh run watch 247</span></div>
+        <div class="to">▶ workflow triggered on push to main</div>
+        <div style="height:0.4rem"></div>
+        <div class="to">⬡ <span style="color:#c9d1d9">build-ios</span></div>
+        <div class="ts">&nbsp;&nbsp;✓ Xcode 15.4 · signed · archived (3m 12s)</div>
+        <div class="to">⬡ <span style="color:#c9d1d9">build-android</span></div>
+        <div class="ts">&nbsp;&nbsp;✓ Gradle 8.5 · signed APK + AAB (2m 48s)</div>
+        <div class="to">⬡ <span style="color:#c9d1d9">test-suite</span></div>
+        <div class="ts">&nbsp;&nbsp;✓ 312 passed · 0 failed · 98% coverage</div>
+        <div class="to">⬡ <span style="color:#c9d1d9">security-scan</span></div>
+        <div class="ts">&nbsp;&nbsp;✓ no vulnerabilities found</div>
+        <div class="to">⬡ <span style="color:#c9d1d9">distribute</span></div>
+        <div class="ts">&nbsp;&nbsp;✓ TestFlight → 42 testers notified</div>
+        <div class="ts">&nbsp;&nbsp;✓ Play Store Internal Track → live</div>
+        <div style="height:0.4rem"></div>
+        <div class="ts">🚀 Deployment complete in 7m 03s</div>
+        <div class="tl" style="margin-top:0.5rem"><span class="tp">❯</span><span class="tc"> <span class="cursor"></span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stat-item"><div class="stat-n">55+</div><div class="stat-l">Pipelines Shipped</div></div>
+  <div class="stat-item"><div class="stat-n">40%</div><div class="stat-l">Avg Build Time Saved</div></div>
+  <div class="stat-item"><div class="stat-n">100%</div><div class="stat-l">On-Time Delivery</div></div>
+  <div class="stat-item"><div class="stat-n">4.9★</div><div class="stat-l">Client Satisfaction</div></div>
+  <div class="stat-item"><div class="stat-n">3 yrs</div><div class="stat-l">CI/CD Experience</div></div>
+</div>
+
+<section class="section" id="services" style="background:linear-gradient(180deg,var(--bg) 0%,var(--bg1) 100%)">
+  <div class="section-inner">
+    <div class="eyebrow">What I do</div>
+    <h2 class="section-title">Services</h2>
+    <p class="section-sub">Specialized mobile DevOps solutions — from scratch or on top of what you already have.</p>
+    <div class="services-grid">
+
+      <div class="svc">
+        <div class="svc-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.8"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8zm-1-5h2V7h-2zm0 4h2v-2h-2z"/></svg>
+        </div>
+        <h3>iOS Deployment Automation</h3>
+        <p>Automated Xcode builds, code signing with match, and direct TestFlight or App Store Connect distribution — zero manual clicks.</p>
+        <div class="svc-tags"><span class="stag">Fastlane</span><span class="stag">Xcode Cloud</span><span class="stag">TestFlight</span><span class="stag">Match</span></div>
+        <div class="svc-price">
+          <div><span class="price-tag">₹15,000</span><span class="price-unit">/ project</span></div>
+          <div class="svc-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.8"><path d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm7 4a5 5 0 1 0 0 10A5 5 0 0 0 12 7zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg>
+        </div>
+        <h3>Android Deployment Automation</h3>
+        <p>Reproducible Gradle builds, secure keystore management, and automated uploads to Play Store internal/alpha/beta/production tracks.</p>
+        <div class="svc-tags"><span class="stag">Gradle</span><span class="stag">Play Store API</span><span class="stag">Firebase Dist.</span><span class="stag">AAB</span></div>
+        <div class="svc-price">
+          <div><span class="price-tag">₹12,000</span><span class="price-unit">/ project</span></div>
+          <div class="svc-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
+        <h3>CI/CD with GitHub Actions</h3>
+        <p>Custom YAML workflows for mobile: matrix builds, dependency caching, reusable workflows, OIDC auth, and secrets management.</p>
+        <div class="svc-tags"><span class="stag">YAML</span><span class="stag">Matrix Builds</span><span class="stag">OIDC</span><span class="stag">Caching</span></div>
+        <div class="svc-price">
+          <div><span class="price-tag">₹10,000</span><span class="price-unit">/ workflow</span></div>
+          <div class="svc-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+        </div>
+        <h3>CI/CD with Azure DevOps</h3>
+        <p>Full configuration of Azure Pipelines — artifact feeds, environment approvals, multi-stage YAML, and board integration.</p>
+        <div class="svc-tags"><span class="stag">Azure Pipelines</span><span class="stag">ARM</span><span class="stag">Artifacts</span><span class="stag">Environments</span></div>
+        <div class="svc-price">
+          <div><span class="price-tag">₹12,000</span><span class="price-unit">/ pipeline</span></div>
+          <div class="svc-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Security &amp; Quality Gates</h3>
+        <p>Integrate SAST, dependency scanning, code coverage thresholds, and branch protection into every pipeline stage.</p>
+        <div class="svc-tags"><span class="stag">Snyk</span><span class="stag">CodeQL</span><span class="stag">SonarQube</span><span class="stag">DAST</span></div>
+        <div class="svc-price">
+          <div><span class="price-tag">₹10,000</span><span class="price-unit">/ setup</span></div>
+          <div class="svc-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Pipeline Audit &amp; Optimization</h3>
+        <p>Deep-dive review of your current setup. Cut build times, eliminate flaky jobs, reduce cloud costs, and get full docs.</p>
+        <div class="svc-tags"><span class="stag">Audit</span><span class="stag">Performance</span><span class="stag">Cost Cut</span><span class="stag">Docs</span></div>
+        <div class="svc-price">
+          <div><span class="price-tag">₹8,000</span><span class="price-unit">/ audit</span></div>
+          <div class="svc-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section process-bg" id="process">
+  <div class="section-inner">
+    <div class="eyebrow">How it works</div>
+    <h2 class="section-title">My Process</h2>
+    <p class="section-sub">Simple and transparent — from first call to final handoff.</p>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="step-num-wrap"><div class="step-num">01</div><div class="step-line"></div></div>
+        <h3>Discovery Call</h3>
+        <p>Free 30-min session. We map your stack, pain points, and delivery goals together.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num-wrap"><div class="step-num">02</div><div class="step-line"></div></div>
+        <h3>Scoped Proposal</h3>
+        <p>Detailed scope, timeline, and fixed price — delivered within 24 hours. No vague estimates.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num-wrap"><div class="step-num">03</div><div class="step-line"></div></div>
+        <h3>Build &amp; Demo</h3>
+        <p>Iterative builds with regular check-ins and live demos so there are never any surprises.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num-wrap"><div class="step-num">04</div><div class="step-line"></div></div>
+        <h3>Handoff &amp; Support</h3>
+        <p>Full docs, a video walkthrough, and 30-day post-delivery support included.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="stack" style="background:var(--bg);border-top:1px solid var(--border)">
+  <div class="section-inner">
+    <div class="eyebrow">Tech I use</div>
+    <h2 class="section-title">Full Stack of Tools</h2>
+    <p class="section-sub">Every tool is battle-tested in production mobile environments.</p>
+    <div class="tech-grid">
+      <div class="tech-pill"><svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>GitHub Actions</div>
+      <div class="tech-pill"><svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>Azure DevOps</div>
+      <div class="tech-pill"><svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Fastlane</div>
+      <div class="tech-pill"><svg viewBox="0 0 24 24" fill="none" stroke="#f0a500" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>Xcode &amp; Xcode Cloud</div>
+      <div class="tech-pill"><svg viewBox="0 0 24 24" fill="none" stroke="#78c257" stroke-width="1.8"><path d="M6 18L3.5 6.5M18 18l2.5-11.5M7 4h10M5 8h14"/></svg>Gradle &amp; Android Studio</div>
+      <div class="tech-pill"><svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.8"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>Docker &amp; Containers</div>
+      <div class="tech-pill"><svg viewBox="0 0 24 24" fill="none" stroke="#f0a500" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Snyk &amp; CodeQL</div>
+      <div class="tech-pill"><svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>SonarQube</div>
+      <div class="tech-pill"><svg viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>Firebase &amp; App Dist.</div>
+      <div class="tech-pill"><svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2M12 12v4M10 14h4"/></svg>TestFlight &amp; App Store Connect</div>
+      <div class="tech-pill"><svg viewBox="0 0 24 24" fill="none" stroke="#78c257" stroke-width="1.8"><path d="M21 2H3v16h5l3 3 3-3h7V2z"/><path d="M7 8h10M7 12h7"/></svg>Slack &amp; Teams Alerts</div>
+      <div class="tech-pill"><svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.8"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>Git &amp; GitHub</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="testimonials" style="background:var(--bg1);border-top:1px solid var(--border)">
+  <div class="section-inner">
+    <div class="eyebrow">Client Reviews</div>
+    <h2 class="section-title">What clients say</h2>
+    <p class="section-sub">Real feedback from teams I've worked with across the globe.</p>
+    <div class="testi-grid">
+      <div class="testi">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">Our iOS build time dropped from 45 minutes to under 9. The Fastlane + GitHub Actions setup is rock solid and our team can actually maintain it.</p>
+        <div class="testi-author">
+          <div class="testi-av" style="background:linear-gradient(135deg,#00e5b8,#3b9eff)">SK</div>
+          <div><div class="testi-name">Sarah Kim</div><div class="testi-role">CTO, Fintech Startup · San Francisco</div></div>
+        </div>
+      </div>
+      <div class="testi">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">Migrated our entire Jenkins setup to Azure DevOps in under 2 weeks. Clean, fully documented, and our junior devs understand it without hand-holding.</p>
+        <div class="testi-author">
+          <div class="testi-av" style="background:linear-gradient(135deg,#8b5cf6,#3b9eff)">RM</div>
+          <div><div class="testi-name">Ravi Mehta</div><div class="testi-role">Engineering Lead · Bengaluru</div></div>
+        </div>
+      </div>
+      <div class="testi">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">We had zero DevOps knowledge. Now we have automated Play Store and TestFlight releases every sprint. Rajasekhar made it painless and genuinely fun.</p>
+        <div class="testi-author">
+          <div class="testi-av" style="background:linear-gradient(135deg,#f0a500,#00e5b8)">AL</div>
+          <div><div class="testi-name">Amara Levi</div><div class="testi-role">Co-founder, Mobile Studio · London</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section contact-bg" id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info-block">
+        <div class="eyebrow">Get in touch</div>
+        <h2>Let's build something great together.</h2>
+        <p>Tell me what you're trying to ship. I'll come back with a free assessment and proposal within 24 hours.</p>
+        <div class="cinfo">
+          <div class="cinfo-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div class="cinfo-text"><strong>rajasekharking1205@gmail.com</strong><span>I reply within 24 hours</span></div>
+        </div>
+        <div class="cinfo">
+          <div class="cinfo-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="cinfo-text"><strong>Free 30-min Discovery Call</strong><span>No commitment — just a conversation</span></div>
+        </div>
+        <div class="cinfo">
+          <div class="cinfo-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="cinfo-text"><strong>Hyderabad, India</strong><span>Available for remote work worldwide</span></div>
+        </div>
+        <div class="cinfo">
+          <div class="cinfo-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2M12 12v4M10 14h4"/></svg></div>
+          <div class="cinfo-text"><strong>Turnaround: 1–2 weeks</strong><span>Expedited delivery available</span></div>
+        </div>
+        <div class="contact-socials">
+          <a href="https://github.com/rajasekhar1205-cloud" target="_blank" class="social-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a>
+          <a href="https://linkedin.com" target="_blank" class="social-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://upwork.com" target="_blank" class="social-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+            Upwork
+          </a>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <form action="https://formspree.io/f/mwvwwyav" method="POST">
+          <div class="fg-row">
+            <div class="fg">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="Ravi Sharma" required/>
+            </div>
+            <div class="fg">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="_replyto" placeholder="ravi@company.com" required/>
+            </div>
+          </div>
+          <div class="fg-row">
+            <div class="fg">
+              <label for="phone">Phone Number</label>
+              <input type="text" id="phone" name="phone" placeholder="+91 98765 43210"/>
+            </div>
+            <div class="fg">
+              <label for="budget">Budget Range</label>
+              <select id="budget" name="budget">
+                <option value="">Select range...</option>
+                <option>₹8,000 – ₹12,000</option>
+                <option>₹12,000 – ₹20,000</option>
+                <option>₹20,000 – ₹40,000</option>
+                <option>₹40,000+</option>
+              </select>
+            </div>
+          </div>
+          <div class="fg">
+            <label for="service">Service Needed</label>
+            <select id="service" name="service" required>
+              <option value="">Select a service...</option>
+              <option>iOS Deployment Automation</option>
+              <option>Android Deployment Automation</option>
+              <option>CI/CD with GitHub Actions</option>
+              <option>CI/CD with Azure DevOps</option>
+              <option>Security &amp; Quality Gates</option>
+              <option>Pipeline Audit &amp; Optimization</option>
+              <option>Multiple / Custom Package</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label for="message">Tell me about your project</label>
+            <textarea id="message" name="message" placeholder="Current stack, what's not working, what you want to achieve, timeline..."></textarea>
+          </div>
+          <button type="submit" class="submit">
+            Send Message
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Rajasekhar<span>.</span>dev</div>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#stack">Stack</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-badge">Available for new projects</div>
+    <div class="footer-copy">© 2026 · Built &amp; deployed with GitHub Actions</div>
+  </div>
+</footer>
+
+<script>
+// PARTICLES
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let W, H, pts = [];
+function resize(){W = canvas.width = innerWidth; H = canvas.height = innerHeight}
+resize(); addEventListener('resize', resize);
+for(let i=0;i<80;i++){
+  pts.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-0.5)*0.3,vy:(Math.random()-0.5)*0.3,r:Math.random()*1.5+0.3,a:Math.random()});
+}
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  pts.forEach(p=>{
+    p.x+=p.vx; p.y+=p.vy;
+    if(p.x<0||p.x>W) p.vx*=-1;
+    if(p.y<0||p.y>H) p.vy*=-1;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(0,229,184,${p.a*0.4})`;
+    ctx.fill();
+  });
+  for(let i=0;i<pts.length;i++){
+    for(let j=i+1;j<pts.length;j++){
+      const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);
+      if(d<120){
+        ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);
+        ctx.strokeStyle=`rgba(0,229,184,${0.08*(1-d/120)})`;ctx.lineWidth=0.5;ctx.stroke();
+      }
+    }
+  }
+  requestAnimationFrame(draw);
+}
+draw();
+
+// NAV SCROLL
+const nav = document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>50));
+
+// CARD GLOW
+document.querySelectorAll('.svc').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    card.style.setProperty('--mx',((e.clientX-r.left)/r.width*100).toFixed(1)+'%');
+    card.style.setProperty('--my',((e.clientY-r.top)/r.height*100).toFixed(1)+'%');
+  });
+});
+
+// SCROLL REVEAL
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}});
+},{threshold:0.1});
+document.querySelectorAll('.svc,.testi,.stat-item,.process-step,.tech-pill,.cinfo').forEach(el=>{
+  el.style.opacity='0';el.style.transform='translateY(20px)';
+  el.style.transition='opacity 0.5s ease, transform 0.5s ease';
+  obs.observe(el);
+});
+</script>
+</body>
+</html>
