@@ -35,12 +35,21 @@
   .btn-primary { background: linear-gradient(90deg, var(--accent), var(--accent2)); color: #0a0e1a; padding: 0.9rem 1.8rem; border-radius: 6px; font-weight: 600; text-decoration: none; }
   section { padding: 5rem 4vw; }
   .section-title { font-family: var(--font-mono); font-size: 2rem; margin-bottom: 1rem; text-align: center; }
-  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-  .service-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; transition: transform 0.2s; text-align: center; }
-  .service-card:hover { transform: translateY(-5px); box-shadow: 0 0 12px rgba(0,212,170,0.4); }
-  .service-card img { width: 50px; height: 50px; margin-bottom: 1rem; }
-  .service-card h3 { margin-bottom: 0.5rem; color: var(--accent); }
-  .service-card p { color: var(--muted); }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+  .service-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 16px; padding: 2rem; transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+  }
+  .service-card:hover { transform: translateY(-8px); box-shadow: 0 8px 20px rgba(0,212,170,0.25); }
+  .icon-circle {
+    width: 70px; height: 70px; margin: 0 auto 1rem;
+    border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+  }
+  .icon-circle img { width: 40px; height: 40px; }
+  .service-card h3 { margin-bottom: 0.5rem; color: var(--accent); font-size: 1.2rem; }
+  .service-card p { color: var(--muted); font-size: 0.95rem; }
   .contact-section { background: var(--bg2); }
   .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
   .form-group { margin-bottom: 1rem; }
@@ -77,27 +86,27 @@
   <h2 class="section-title">Services I Offer</h2>
   <div class="services-grid">
     <div class="service-card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="iOS Logo"/>
+      <div class="icon-circle"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="iOS Logo"/></div>
       <h3>iOS Deployment Automation</h3>
       <p>Automated builds, signing, and TestFlight distribution using Fastlane, GitHub Actions, and Azure DevOps.</p>
     </div>
     <div class="service-card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Android_robot.svg" alt="Android Logo"/>
+      <div class="icon-circle"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Android_robot.svg" alt="Android Logo"/></div>
       <h3>Android Deployment Automation</h3>
       <p>Play Store deployment pipelines with secure signing, reproducible builds, and QA validation.</p>
     </div>
     <div class="service-card">
-      <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo"/>
+      <div class="icon-circle"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo"/></div>
       <h3>CI/CD with GitHub Actions</h3>
       <p>Custom workflows for mobile apps: caching, matrix builds, reusable workflows, and secrets management.</p>
     </div>
     <div class="service-card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Microsoft_Azure_Logo.svg" alt="Azure Logo"/>
+      <div class="icon-circle"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Microsoft_Azure_Logo.svg" alt="Azure Logo"/></div>
       <h3>CI/CD with Azure DevOps</h3>
       <p>End-to-end pipelines for mobile projects, artifact feeds, boards, and environment-aware automation.</p>
     </div>
     <div class="service-card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gears_icon.png" alt="Optimization Icon"/>
+      <div class="icon-circle"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gears_icon.png" alt="Optimization Icon"/></div>
       <h3>Pipeline Optimization</h3>
       <p>Audit and optimize existing pipelines to reduce build times, costs, and improve reliability.</p>
     </div>
@@ -112,16 +121,9 @@
       <p>Ready to streamline your mobile deployments? Fill out the form below and I’ll get back to you.</p>
       <p><strong>Email:</strong> rajasekharking1205@gmail.com</p>
     </div>
-    <form action="https://formspree.io/f/mwvwwyav" method="POST" onsubmit="document.getElementById('success').style.display='block';">
-      <div class="form-group">
-        <label for="name">Your Name</label>
-        <input type="text" id="name" name="name" placeholder="Enter your name" required/>
-      </div>
-      <div class="form-group">
-        <label for="email">Your Email</label>
-        <input type="email" id="email" name="_replyto" placeholder="Enter your email" required/>
-      </div>
-     Here’s a polished `index.html` that incorporates the suggestions we discussed — **icons for each service, hover effects, placeholders in the form, and a success message after submission**. This will make your site look more professional and visually engaging:
+    <form action="https://formspree.ioYou’re right — the earlier version felt cluttered. I’ve rebuilt the layout so the **service cards are clean, evenly spaced, with icons inside styled circles**, and the **contact form remains fully functional with your Formspree endpoint**. This version balances whitespace, typography, and alignment so everything looks professional.
+
+Here’s the updated `index.html`:
 
 ```html
 <!DOCTYPE html>
@@ -160,13 +162,22 @@
   .hero-sub { color: var(--muted); max-width: 700px; margin: 0 auto 2rem; font-size: 1.1rem; }
   .btn-primary { background: linear-gradient(90deg, var(--accent), var(--accent2)); color: #0a0e1a; padding: 0.9rem 1.8rem; border-radius: 6px; font-weight: 600; text-decoration: none; }
   section { padding: 5rem 4vw; }
-  .section-title { font-family: var(--font-mono); font-size: 2rem; margin-bottom: 1rem; text-align: center; }
-  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-  .service-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; transition: transform 0.2s; text-align: center; }
-  .service-card:hover { transform: translateY(-5px); box-shadow: 0 0 12px rgba(0,212,170,0.4); }
-  .service-card img { width: 50px; height: 50px; margin-bottom: 1rem; }
-  .service-card h3 { margin-bottom: 0.5rem; color: var(--accent); }
-  .service-card p { color: var(--muted); }
+  .section-title { font-family: var(--font-mono); font-size: 2rem; margin-bottom: 2rem; text-align: center; }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+  .service-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 16px; padding: 2rem; transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+  }
+  .service-card:hover { transform: translateY(-8px); box-shadow: 0 8px 20px rgba(0,212,170,0.25); }
+  .icon-circle {
+    width: 70px; height: 70px; margin: 0 auto 1rem;
+    border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+  }
+  .icon-circle img { width: 40px; height: 40px; }
+  .service-card h3 { margin-bottom: 0.5rem; color: var(--accent); font-size: 1.2rem; }
+  .service-card p { color: var(--muted); font-size: 0.95rem; }
   .contact-section { background: var(--bg2); }
   .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
   .form-group { margin-bottom: 1rem; }
@@ -203,27 +214,27 @@
   <h2 class="section-title">Services I Offer</h2>
   <div class="services-grid">
     <div class="service-card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="iOS Logo"/>
+      <div class="icon-circle"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="iOS Logo"/></div>
       <h3>iOS Deployment Automation</h3>
       <p>Automated builds, signing, and TestFlight distribution using Fastlane, GitHub Actions, and Azure DevOps.</p>
     </div>
     <div class="service-card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Android_robot.svg" alt="Android Logo"/>
+      <div class="icon-circle"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Android_robot.svg" alt="Android Logo"/></div>
       <h3>Android Deployment Automation</h3>
       <p>Play Store deployment pipelines with secure signing, reproducible builds, and QA validation.</p>
     </div>
     <div class="service-card">
-      <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo"/>
+      <div class="icon-circle"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo"/></div>
       <h3>CI/CD with GitHub Actions</h3>
       <p>Custom workflows for mobile apps: caching, matrix builds, reusable workflows, and secrets management.</p>
     </div>
     <div class="service-card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Microsoft_Azure_Logo.svg" alt="Azure Logo"/>
+      <div class="icon-circle"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Microsoft_Azure_Logo.svg" alt="Azure Logo"/></div>
       <h3>CI/CD with Azure DevOps</h3>
       <p>End-to-end pipelines for mobile projects, artifact feeds, boards, and environment-aware automation.</p>
     </div>
     <div class="service-card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gears_icon.png" alt="Optimization Icon"/>
+      <div class="icon-circle"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gears_icon.png" alt="Optimization Icon"/></div>
       <h3>Pipeline Optimization</h3>
       <p>Audit and optimize existing pipelines to reduce build times, costs, and improve reliability.</p>
     </div>
@@ -238,15 +249,4 @@
       <p>Ready to streamline your mobile deployments? Fill out the form below and I’ll get back to you.</p>
       <p><strong>Email:</strong> rajasekharking1205@gmail.com</p>
     </div>
-    <form action="https://formspree.io/f/mwvwwyav" method="POST" onsubmit="document.getElementById('success').style.display='block';">
-      <div class="form-group">
-        <label for="name">Your Name</label>
-        <input type="text" id="name" name="name" placeholder="Enter your name" required/>
-      </div>
-      <div class="form-group">
-        <label for="email">Your Email</label>
-        <input type="email" id="email" name="_replyto" placeholder="Enter your email" required/>
-      </div>
-      <div class="form-group">
-        <label for="phone">Phone Number</label>
-        <input type="text"
+    <form action="https://form
