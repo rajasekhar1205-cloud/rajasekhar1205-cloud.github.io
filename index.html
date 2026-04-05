@@ -6,7 +6,49 @@
 <title>Rajasekhar – Mobile Deployment Specialist</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
-  /* Keep your existing CSS here */
+  :root {
+    --bg: #0a0e1a;
+    --bg2: #111827;
+    --accent: #00d4aa;
+    --accent2: #4f9eff;
+    --text: #e8edf5;
+    --muted: #7a8ba0;
+    --border: rgba(255,255,255,0.08);
+    --font-mono: 'Space Mono', monospace;
+    --font-body: 'DM Sans', sans-serif;
+  }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-body); margin: 0; }
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 4vw; background: rgba(10,14,26,0.85);
+    backdrop-filter: blur(12px); border-bottom: 1px solid var(--border);
+    z-index: 100;
+  }
+  .logo { font-family: var(--font-mono); font-size: 1.2rem; color: var(--accent); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; }
+  .nav-cta { background: var(--accent); color: #0a0e1a; padding: 0.5rem 1rem; border-radius: 6px; font-weight: 600; }
+  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 8rem 4vw 4rem; text-align: center; }
+  .hero h1 { font-family: var(--font-mono); font-size: 3rem; margin-bottom: 1rem; }
+  .hero-sub { color: var(--muted); max-width: 700px; margin: 0 auto 2rem; font-size: 1.1rem; }
+  .btn-primary { background: linear-gradient(90deg, var(--accent), var(--accent2)); color: #0a0e1a; padding: 0.9rem 1.8rem; border-radius: 6px; font-weight: 600; text-decoration: none; }
+  section { padding: 5rem 4vw; }
+  .section-title { font-family: var(--font-mono); font-size: 2rem; margin-bottom: 1rem; text-align: center; }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .service-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; transition: transform 0.2s; }
+  .service-card:hover { transform: translateY(-5px); box-shadow: 0 0 12px rgba(0,212,170,0.4); }
+  .service-card h3 { margin-bottom: 0.5rem; color: var(--accent); }
+  .service-card p { color: var(--muted); }
+  .contact-section { background: var(--bg2); }
+  .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .form-group { margin-bottom: 1rem; }
+  .form-group label { display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 0.4rem; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text);
+  }
+  .submit-btn { background: var(--accent); color: #0a0e1a; padding: 0.9rem; border-radius: 8px; font-weight: 700; width: 100%; cursor: pointer; }
+  footer { padding: 2rem 4vw; text-align: center; color: var(--muted); border-top: 1px solid var(--border); }
 </style>
 </head>
 <body>
@@ -16,9 +58,6 @@
   <div class="logo">rajasekhar<span>mobile</span>.dev</div>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
-    <li><a href="#process">Process</a></li>
-    <li><a href="#pricing">Pricing</a></li>
-    <li><a href="#testimonials">Reviews</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="#contact" class="nav-cta">Hire Me</a>
@@ -26,67 +65,34 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-grid"></div>
-  <div class="hero-tag">// available for freelance work</div>
-  <h1>
-    Mobile Deployment Pipelines that<br/>
-    <span class="hl">ship faster</span> &amp;<br/>
-    <span class="hl2">break less.</span>
-  </h1>
-  <p class="hero-sub">
-    Rajasekhar – Mobile Deployment Specialist. I build bulletproof CI/CD pipelines for iOS & Android apps — so your team ships with confidence, not chaos.
-  </p>
-  <div class="hero-actions">
-    <a href="#services" class="btn-primary">See My Services</a>
-    <a href="#contact" class="btn-ghost">Start a Project</a>
-  </div>
-  <div class="hero-badges">
-    <span class="badge"><span class="badge-dot"></span>iOS & Android Expert</span>
-    <span class="badge"><span class="badge-dot" style="background:var(--accent2)"></span>Fastlane & TestFlight</span>
-    <span class="badge"><span class="badge-dot" style="background:#f0a500"></span>Play Store Deployment</span>
-  </div>
+  <h1>Rajasekhar – Mobile Deployment Specialist</h1>
+  <p class="hero-sub">I automate mobile app deployments using <strong>GitHub Actions</strong> and <strong>Azure DevOps</strong>, ensuring faster releases, fewer errors, and smooth delivery pipelines for iOS & Android.</p>
+  <a href="#services" class="btn-primary">Explore My Services</a>
 </section>
 
 <!-- SERVICES -->
 <section id="services">
-  <div class="section-tag">// what I do</div>
-  <h2 class="section-title">Services</h2>
-  <p class="section-sub">Specialized mobile CI/CD solutions tailored for modern app teams.</p>
-
+  <h2 class="section-title">Services I Offer</h2>
   <div class="services-grid">
     <div class="service-card">
-      <div class="service-icon">📱</div>
-      <h3>Mobile Deployment Specialist</h3>
-      <p>Automated builds, signing, and distribution for iOS & Android. Fastlane integration, TestFlight & Play Store deployment, reproducible pipelines tailored for QA validation.</p>
-      <div class="service-tags">
-        <span class="stag">iOS</span>
-        <span class="stag">Android</span>
-        <span class="stag">Fastlane</span>
-        <span class="stag">TestFlight</span>
-        <span class="stag">Play Store</span>
-      </div>
+      <h3>iOS Deployment Automation</h3>
+      <p>Automated builds, signing, and TestFlight distribution using Fastlane, GitHub Actions, and Azure DevOps.</p>
     </div>
-
     <div class="service-card">
-      <div class="service-icon">🔁</div>
-      <h3>CI/CD Optimization</h3>
-      <p>Matrix builds, caching, reusable workflows, and secrets management to ensure smooth mobile deployments.</p>
-      <div class="service-tags">
-        <span class="stag">GitHub Actions</span>
-        <span class="stag">Azure DevOps</span>
-        <span class="stag">YAML</span>
-      </div>
+      <h3>Android Deployment Automation</h3>
+      <p>Play Store deployment pipelines with secure signing, reproducible builds, and QA validation.</p>
     </div>
-
     <div class="service-card">
-      <div class="service-icon">🛡️</div>
-      <h3>Security & Quality Gates</h3>
-      <p>Integrate SAST, dependency scanning, code coverage, and branch protection policies into your mobile pipeline.</p>
-      <div class="service-tags">
-        <span class="stag">SonarQube</span>
-        <span class="stag">Snyk</span>
-        <span class="stag">CodeQL</span>
-      </div>
+      <h3>CI/CD with GitHub Actions</h3>
+      <p>Custom workflows for mobile apps: caching, matrix builds, reusable workflows, and secrets management.</p>
+    </div>
+    <div class="service-card">
+      <h3>CI/CD with Azure DevOps</h3>
+      <p>End-to-end pipelines for mobile projects, artifact feeds, boards, and environment-aware automation.</p>
+    </div>
+    <div class="service-card">
+      <h3>Pipeline Optimization</h3>
+      <p>Audit and optimize existing pipelines to reduce build times, costs, and improve reliability.</p>
     </div>
   </div>
 </section>
@@ -94,10 +100,10 @@
 <!-- CONTACT -->
 <section id="contact" class="contact-section">
   <div class="contact-inner">
-    <div class="contact-info">
+    <div>
       <h2>Start Your Project</h2>
-      <p>Ready to streamline your mobile deployments? Fill out the form and let’s build your pipeline.</p>
-      <div class="contact-detail"><strong>Email:</strong> rajasekhar@mobile.dev</div>
+      <p>Ready to streamline your mobile deployments? Fill out the form below and I’ll get back to you.</p>
+      <p><strong>Email:</strong> rajasekharking1205@gmail.com</p>
     </div>
     <form>
       <div class="form-group">
@@ -105,11 +111,21 @@
         <input type="text" id="name" name="name" required/>
       </div>
       <div class="form-group">
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="email" required/>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="text" id="phone" name="phone"/>
+      </div>
+      <div class="form-group">
         <label for="service">Service Needed</label>
         <select id="service" name="service">
           <option>iOS Deployment</option>
           <option>Android Deployment</option>
-          <option>CI/CD Optimization</option>
+          <option>CI/CD with GitHub Actions</option>
+          <option>CI/CD with Azure DevOps</option>
+          <option>Pipeline Optimization</option>
         </select>
       </div>
       <div class="form-group">
@@ -123,8 +139,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <span>© 2026 Rajasekhar – Mobile Deployment Specialist</span>
-  <a href="#contact">Hire Me</a>
+  © 2026 Rajasekhar – Mobile Deployment Specialist
 </footer>
 
 </body>
