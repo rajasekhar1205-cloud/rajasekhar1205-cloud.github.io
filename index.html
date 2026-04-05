@@ -34,22 +34,12 @@
   .hero-sub { color: var(--muted); max-width: 700px; margin: 0 auto 2rem; font-size: 1.1rem; }
   .btn-primary { background: linear-gradient(90deg, var(--accent), var(--accent2)); color: #0a0e1a; padding: 0.9rem 1.8rem; border-radius: 6px; font-weight: 600; text-decoration: none; }
   section { padding: 5rem 4vw; }
-  .section-title { font-family: var(--font-mono); font-size: 2rem; margin-bottom: 2rem; text-align: center; }
-  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-  .service-card {
-    background: var(--bg2); border: 1px solid var(--border);
-    border-radius: 16px; padding: 2rem; transition: transform 0.3s, box-shadow 0.3s;
-    text-align: center;
-  }
-  .service-card:hover { transform: translateY(-8px); box-shadow: 0 8px 20px rgba(0,212,170,0.25); }
-  .icon-circle {
-    width: 70px; height: 70px; margin: 0 auto 1rem;
-    border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2));
-    display: flex; align-items: center; justify-content: center;
-  }
-  .icon-circle img { width: 40px; height: 40px; }
-  .service-card h3 { margin-bottom: 0.5rem; color: var(--accent); font-size: 1.2rem; }
-  .service-card p { color: var(--muted); font-size: 0.95rem; }
+  .section-title { font-family: var(--font-mono); font-size: 2rem; margin-bottom: 1rem; text-align: center; }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .service-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; transition: transform 0.2s; }
+  .service-card:hover { transform: translateY(-5px); box-shadow: 0 0 12px rgba(0,212,170,0.4); }
+  .service-card h3 { margin-bottom: 0.5rem; color: var(--accent); }
+  .service-card p { color: var(--muted); }
   .contact-section { background: var(--bg2); }
   .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
   .form-group { margin-bottom: 1rem; }
@@ -58,7 +48,6 @@
     width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text);
   }
   .submit-btn { background: var(--accent); color: #0a0e1a; padding: 0.9rem; border-radius: 8px; font-weight: 700; width: 100%; cursor: pointer; }
-  .success-message { display: none; color: var(--accent); margin-top: 1rem; text-align: center; }
   footer { padding: 2rem 4vw; text-align: center; color: var(--muted); border-top: 1px solid var(--border); }
 </style>
 </head>
@@ -86,27 +75,22 @@
   <h2 class="section-title">Services I Offer</h2>
   <div class="services-grid">
     <div class="service-card">
-      <div class="icon-circle"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="iOS Logo"/></div>
       <h3>iOS Deployment Automation</h3>
       <p>Automated builds, signing, and TestFlight distribution using Fastlane, GitHub Actions, and Azure DevOps.</p>
     </div>
     <div class="service-card">
-      <div class="icon-circle"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Android_robot.svg" alt="Android Logo"/></div>
       <h3>Android Deployment Automation</h3>
       <p>Play Store deployment pipelines with secure signing, reproducible builds, and QA validation.</p>
     </div>
     <div class="service-card">
-      <div class="icon-circle"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo"/></div>
       <h3>CI/CD with GitHub Actions</h3>
       <p>Custom workflows for mobile apps: caching, matrix builds, reusable workflows, and secrets management.</p>
     </div>
     <div class="service-card">
-      <div class="icon-circle"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Microsoft_Azure_Logo.svg" alt="Azure Logo"/></div>
       <h3>CI/CD with Azure DevOps</h3>
       <p>End-to-end pipelines for mobile projects, artifact feeds, boards, and environment-aware automation.</p>
     </div>
     <div class="service-card">
-      <div class="icon-circle"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gears_icon.png" alt="Optimization Icon"/></div>
       <h3>Pipeline Optimization</h3>
       <p>Audit and optimize existing pipelines to reduce build times, costs, and improve reliability.</p>
     </div>
@@ -120,9 +104,48 @@
       <h2>Start Your Project</h2>
       <p>Ready to streamline your mobile deployments? Fill out the form below and I’ll get back to you.</p>
       <p><strong>Email:</strong> rajasekharking1205@gmail.com</p>
-    </You’re right — the duplication was my mistake. Let’s clean this up properly so you have **one neat, professional `index.html`** with no repeated sections, consistent service cards, icons inside styled circles, and the contact form wired to your Formspree endpoint.
+    </div>
+    <!-- Formspree integration -->
+    <form action="https://formspree.io/f/mwvwwyav" method="POST">
+      <div class="form-group">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" required/>
+      </div>
+      <div class="form-group">
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="_replyto" required/>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="text" id="phone" name="phone"/>
+      </div>
+      <div class="form-group">
+        <label for="service">Service Needed</label>
+        <select id="service" name="service">
+          <option>iOS Deployment</option>
+          <option>Android Deployment</option>
+          <option>CI/CD with GitHub Actions</option>
+          <option>CI/CD with Azure DevOps</option>
+          <option>Pipeline Optimization</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message">Project Details</label>
+        <textarea id="message" name="message"></textarea>
+      </div>
+      <input type="hidden" name="_subject" value="New Project Request from Website"/>
+      <button type="submit" class="submit-btn">Submit Request</button>
+    </form>
+  </div>
+</section>
 
-Here’s the corrected version:
+<!-- FOOTER -->
+<footer>
+  © 2026 Rajasekhar – Mobile Deployment Specialist
+</footer>
+
+</body>
+</Here’s the corrected `index.html` with your **Formspree endpoint** fully integrated. Now, when someone fills out the form and clicks “Submit Request,” the data will be sent to Formspree, which will forward it to **rajasekharking1205@gmail.com**.
 
 ```html
 <!DOCTYPE html>
@@ -161,22 +184,12 @@ Here’s the corrected version:
   .hero-sub { color: var(--muted); max-width: 700px; margin: 0 auto 2rem; font-size: 1.1rem; }
   .btn-primary { background: linear-gradient(90deg, var(--accent), var(--accent2)); color: #0a0e1a; padding: 0.9rem 1.8rem; border-radius: 6px; font-weight: 600; text-decoration: none; }
   section { padding: 5rem 4vw; }
-  .section-title { font-family: var(--font-mono); font-size: 2rem; margin-bottom: 2rem; text-align: center; }
-  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-  .service-card {
-    background: var(--bg2); border: 1px solid var(--border);
-    border-radius: 16px; padding: 2rem; transition: transform 0.3s, box-shadow 0.3s;
-    text-align: center;
-  }
-  .service-card:hover { transform: translateY(-8px); box-shadow: 0 8px 20px rgba(0,212,170,0.25); }
-  .icon-circle {
-    width: 70px; height: 70px; margin: 0 auto 1rem;
-    border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2));
-    display: flex; align-items: center; justify-content: center;
-  }
-  .icon-circle img { width: 40px; height: 40px; }
-  .service-card h3 { margin-bottom: 0.5rem; color: var(--accent); font-size: 1.2rem; }
-  .service-card p { color: var(--muted); font-size: 0.95rem; }
+  .section-title { font-family: var(--font-mono); font-size: 2rem; margin-bottom: 1rem; text-align: center; }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .service-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; transition: transform 0.2s; }
+  .service-card:hover { transform: translateY(-5px); box-shadow: 0 0 12px rgba(0,212,170,0.4); }
+  .service-card h3 { margin-bottom: 0.5rem; color: var(--accent); }
+  .service-card p { color: var(--muted); }
   .contact-section { background: var(--bg2); }
   .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
   .form-group { margin-bottom: 1rem; }
@@ -212,27 +225,22 @@ Here’s the corrected version:
   <h2 class="section-title">Services I Offer</h2>
   <div class="services-grid">
     <div class="service-card">
-      <div class="icon-circle"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="iOS Logo"/></div>
       <h3>iOS Deployment Automation</h3>
       <p>Automated builds, signing, and TestFlight distribution using Fastlane, GitHub Actions, and Azure DevOps.</p>
     </div>
     <div class="service-card">
-      <div class="icon-circle"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Android_robot.svg" alt="Android Logo"/></div>
       <h3>Android Deployment Automation</h3>
       <p>Play Store deployment pipelines with secure signing, reproducible builds, and QA validation.</p>
     </div>
     <div class="service-card">
-      <div class="icon-circle"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo"/></div>
       <h3>CI/CD with GitHub Actions</h3>
       <p>Custom workflows for mobile apps: caching, matrix builds, reusable workflows, and secrets management.</p>
     </div>
     <div class="service-card">
-      <div class="icon-circle"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Microsoft_Azure_Logo.svg" alt="Azure Logo"/></div>
       <h3>CI/CD with Azure DevOps</h3>
       <p>End-to-end pipelines for mobile projects, artifact feeds, boards, and environment-aware automation.</p>
     </div>
     <div class="service-card">
-      <div class="icon-circle"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gears_icon.png" alt="Optimization Icon"/></div>
       <h3>Pipeline Optimization</h3>
       <p>Audit and optimize existing pipelines to reduce build times, costs, and improve reliability.</p>
     </div>
@@ -247,7 +255,44 @@ Here’s the corrected version:
       <p>Ready to streamline your mobile deployments? Fill out the form below and I’ll get back to you.</p>
       <p><strong>Email:</strong> rajasekharking1205@gmail.com</p>
     </div>
+    <!-- Formspree integration -->
     <form action="https://formspree.io/f/mwvwwyav" method="POST">
       <div class="form-group">
         <label for="name">Your Name</label>
-        <input type="
+        <input type="text" id="name" name="name" required/>
+      </div>
+      <div class="form-group">
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="_replyto" required/>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="text" id="phone" name="phone"/>
+      </div>
+      <div class="form-group">
+        <label for="service">Service Needed</label>
+        <select id="service" name="service">
+          <option>iOS Deployment</option>
+          <option>Android Deployment</option>
+          <option>CI/CD with GitHub Actions</option>
+          <option>CI/CD with Azure DevOps</option>
+          <option>Pipeline Optimization</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message">Project Details</label>
+        <textarea id="message" name="message"></textarea>
+      </div>
+      <input type="hidden" name="_subject" value="New Project Request from Website"/>
+      <button type="submit" class="submit-btn">Submit Request</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © 2026 Rajasekhar – Mobile Deployment Specialist
+</footer>
+
+</body>
+</html
