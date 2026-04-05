@@ -36,10 +36,11 @@
   section { padding: 5rem 4vw; }
   .section-title { font-family: var(--font-mono); font-size: 2rem; margin-bottom: 1rem; text-align: center; }
   .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-  .service-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; transition: transform 0.2s; }
+  .service-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; transition: transform 0.2s; text-decoration: none; color: var(--text); display: block; }
   .service-card:hover { transform: translateY(-5px); box-shadow: 0 0 12px rgba(0,212,170,0.4); }
   .service-card h3 { margin-bottom: 0.5rem; color: var(--accent); }
   .service-card p { color: var(--muted); }
+  .price { font-weight: 700; color: var(--accent2); margin-top: 0.5rem; }
   .contact-section { background: var(--bg2); }
   .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
   .form-group { margin-bottom: 1rem; }
@@ -74,26 +75,31 @@
 <section id="services">
   <h2 class="section-title">Services I Offer</h2>
   <div class="services-grid">
-    <div class="service-card">
+    <a href="ios.html" class="service-card">
       <h3>iOS Deployment Automation</h3>
       <p>Automated builds, signing, and TestFlight distribution using Fastlane, GitHub Actions, and Azure DevOps.</p>
-    </div>
-    <div class="service-card">
+      <p class="price">₹15,000 per project</p>
+    </a>
+    <a href="android.html" class="service-card">
       <h3>Android Deployment Automation</h3>
       <p>Play Store deployment pipelines with secure signing, reproducible builds, and QA validation.</p>
-    </div>
-    <div class="service-card">
+      <p class="price">₹12,000 per project</p>
+    </a>
+    <a href="github-actions.html" class="service-card">
       <h3>CI/CD with GitHub Actions</h3>
       <p>Custom workflows for mobile apps: caching, matrix builds, reusable workflows, and secrets management.</p>
-    </div>
-    <div class="service-card">
+      <p class="price">₹10,000 per workflow</p>
+    </a>
+    <a href="azure-devops.html" class="service-card">
       <h3>CI/CD with Azure DevOps</h3>
       <p>End-to-end pipelines for mobile projects, artifact feeds, boards, and environment-aware automation.</p>
-    </div>
-    <div class="service-card">
+      <p class="price">₹12,000 per pipeline</p>
+    </a>
+    <a href="optimization.html" class="service-card">
       <h3>Pipeline Optimization</h3>
       <p>Audit and optimize existing pipelines to reduce build times, costs, and improve reliability.</p>
-    </div>
+      <p class="price">₹8,000 per audit</p>
+    </a>
   </div>
 </section>
 
@@ -119,33 +125,9 @@
         <label for="phone">Phone Number</label>
         <input type="text" id="phone" name="phone"/>
       </div>
-      <div class="form-group">
-        <label for="service">Service Needed</label>
-        <select id="service" name="service">
-          <option>iOS Deployment</option>
-          <option>Android Deployment</option>
-          <option>CI/CD with GitHub Actions</option>
-          <option>CI/CD with Azure DevOps</option>
-          <option>Pipeline Optimization</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="message">Project Details</label>
-        <textarea id="message" name="message"></textarea>
-      </div>
-      <input type="hidden" name="_subject" value="New Project Request from Website"/>
-      <button type="submit" class="submit-btn">Submit Request</button>
-    </form>
-  </div>
-</section>
+      <div class="form-groupYes, we can do that — you can show your **pricing directly on each service card** and make the cards clickable so they lead to dedicated pages (like `ios.html`, `android.html`, etc.) where you explain the process in detail.  
 
-<!-- FOOTER -->
-<footer>
-  © 2026 Rajasekhar – Mobile Deployment Specialist
-</footer>
-
-</body>
-</Here’s the corrected `index.html` with your **Formspree endpoint** fully integrated. Now, when someone fills out the form and clicks “Submit Request,” the data will be sent to Formspree, which will forward it to **rajasekharking1205@gmail.com**.
+Here’s the updated `index.html` with both **prices** and **links** added:
 
 ```html
 <!DOCTYPE html>
@@ -186,10 +168,11 @@
   section { padding: 5rem 4vw; }
   .section-title { font-family: var(--font-mono); font-size: 2rem; margin-bottom: 1rem; text-align: center; }
   .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-  .service-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; transition: transform 0.2s; }
+  .service-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; transition: transform 0.2s; text-decoration: none; color: var(--text); display: block; }
   .service-card:hover { transform: translateY(-5px); box-shadow: 0 0 12px rgba(0,212,170,0.4); }
   .service-card h3 { margin-bottom: 0.5rem; color: var(--accent); }
   .service-card p { color: var(--muted); }
+  .price { font-weight: 700; color: var(--accent2); margin-top: 0.5rem; }
   .contact-section { background: var(--bg2); }
   .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
   .form-group { margin-bottom: 1rem; }
@@ -224,26 +207,31 @@
 <section id="services">
   <h2 class="section-title">Services I Offer</h2>
   <div class="services-grid">
-    <div class="service-card">
+    <a href="ios.html" class="service-card">
       <h3>iOS Deployment Automation</h3>
       <p>Automated builds, signing, and TestFlight distribution using Fastlane, GitHub Actions, and Azure DevOps.</p>
-    </div>
-    <div class="service-card">
+      <p class="price">₹15,000 per project</p>
+    </a>
+    <a href="android.html" class="service-card">
       <h3>Android Deployment Automation</h3>
       <p>Play Store deployment pipelines with secure signing, reproducible builds, and QA validation.</p>
-    </div>
-    <div class="service-card">
+      <p class="price">₹12,000 per project</p>
+    </a>
+    <a href="github-actions.html" class="service-card">
       <h3>CI/CD with GitHub Actions</h3>
       <p>Custom workflows for mobile apps: caching, matrix builds, reusable workflows, and secrets management.</p>
-    </div>
-    <div class="service-card">
+      <p class="price">₹10,000 per workflow</p>
+    </a>
+    <a href="azure-devops.html" class="service-card">
       <h3>CI/CD with Azure DevOps</h3>
       <p>End-to-end pipelines for mobile projects, artifact feeds, boards, and environment-aware automation.</p>
-    </div>
-    <div class="service-card">
+      <p class="price">₹12,000 per pipeline</p>
+    </a>
+    <a href="optimization.html" class="service-card">
       <h3>Pipeline Optimization</h3>
       <p>Audit and optimize existing pipelines to reduce build times, costs, and improve reliability.</p>
-    </div>
+      <p class="price">₹8,000 per audit</p>
+    </a>
   </div>
 </section>
 
@@ -271,28 +259,5 @@
       </div>
       <div class="form-group">
         <label for="service">Service Needed</label>
-        <select id="service" name="service">
+        <select id="service" name="service" required>
           <option>iOS Deployment</option>
-          <option>Android Deployment</option>
-          <option>CI/CD with GitHub Actions</option>
-          <option>CI/CD with Azure DevOps</option>
-          <option>Pipeline Optimization</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="message">Project Details</label>
-        <textarea id="message" name="message"></textarea>
-      </div>
-      <input type="hidden" name="_subject" value="New Project Request from Website"/>
-      <button type="submit" class="submit-btn">Submit Request</button>
-    </form>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  © 2026 Rajasekhar – Mobile Deployment Specialist
-</footer>
-
-</body>
-</html
