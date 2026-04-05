@@ -36,8 +36,9 @@
   section { padding: 5rem 4vw; }
   .section-title { font-family: var(--font-mono); font-size: 2rem; margin-bottom: 1rem; text-align: center; }
   .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-  .service-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; transition: transform 0.2s; }
+  .service-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; transition: transform 0.2s; text-align: center; }
   .service-card:hover { transform: translateY(-5px); box-shadow: 0 0 12px rgba(0,212,170,0.4); }
+  .service-card img { width: 100%; max-width: 120px; margin-bottom: 1rem; border-radius: 8px; }
   .service-card h3 { margin-bottom: 0.5rem; color: var(--accent); }
   .service-card p { color: var(--muted); }
   .contact-section { background: var(--bg2); }
@@ -75,22 +76,27 @@
   <h2 class="section-title">Services I Offer</h2>
   <div class="services-grid">
     <div class="service-card">
+      <img src="images/ios-service.png" alt="iOS Deployment Automation">
       <h3>iOS Deployment Automation</h3>
       <p>Automated builds, signing, and TestFlight distribution using Fastlane, GitHub Actions, and Azure DevOps.</p>
     </div>
     <div class="service-card">
+      <img src="images/android-service.png" alt="Android Deployment Automation">
       <h3>Android Deployment Automation</h3>
       <p>Play Store deployment pipelines with secure signing, reproducible builds, and QA validation.</p>
     </div>
     <div class="service-card">
+      <img src="images/github-actions.png" alt="CI/CD with GitHub Actions">
       <h3>CI/CD with GitHub Actions</h3>
       <p>Custom workflows for mobile apps: caching, matrix builds, reusable workflows, and secrets management.</p>
     </div>
     <div class="service-card">
+      <img src="images/azure-devops.png" alt="CI/CD with Azure DevOps">
       <h3>CI/CD with Azure DevOps</h3>
       <p>End-to-end pipelines for mobile projects, artifact feeds, boards, and environment-aware automation.</p>
     </div>
     <div class="service-card">
+      <img src="images/pipeline-optimization.png" alt="Pipeline Optimization">
       <h3>Pipeline Optimization</h3>
       <p>Audit and optimize existing pipelines to reduce build times, costs, and improve reliability.</p>
     </div>
@@ -126,22 +132,38 @@
           <option>CI/CD with GitHub Actions</option>
           <option>CI/CD with Azure DevOps</option>
           <option>Pipeline Optimization</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="message">Project Details</label>
-        <textarea id="message" name="message"></textarea>
-      </div>
-      <input type="hidden" name="_subject" value="New Project Request from Website"/>
-      <button type="submit" class="submit-btn">Submit Request</button>
-    </form>
+Here’s your HTML updated with **service images** added neatly inside each card.  
+You can place your image files (e.g., `ios-service.png`, `android-service.png`, etc.) in an `images/` folder within your project directory.
+
+```html
+<!-- SERVICES -->
+<section id="services">
+  <h2 class="section-title">Services I Offer</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <img src="images/ios-service.png" alt="iOS Deployment Automation" style="width:100%; border-radius:8px; margin-bottom:1rem;">
+      <h3>iOS Deployment Automation</h3>
+      <p>Automated builds, signing, and TestFlight distribution using Fastlane, GitHub Actions, and Azure DevOps.</p>
+    </div>
+    <div class="service-card">
+      <img src="images/android-service.png" alt="Android Deployment Automation" style="width:100%; border-radius:8px; margin-bottom:1rem;">
+      <h3>Android Deployment Automation</h3>
+      <p>Play Store deployment pipelines with secure signing, reproducible builds, and QA validation.</p>
+    </div>
+    <div class="service-card">
+      <img src="images/github-actions.png" alt="CI/CD with GitHub Actions" style="width:100%; border-radius:8px; margin-bottom:1rem;">
+      <h3>CI/CD with GitHub Actions</h3>
+      <p>Custom workflows for mobile apps: caching, matrix builds, reusable workflows, and secrets management.</p>
+    </div>
+    <div class="service-card">
+      <img src="images/azure-devops.png" alt="CI/CD with Azure DevOps" style="width:100%; border-radius:8px; margin-bottom:1rem;">
+      <h3>CI/CD with Azure DevOps</h3>
+      <p>End-to-end pipelines for mobile projects, artifact feeds, boards, and environment-aware automation.</p>
+    </div>
+    <div class="service-card">
+      <img src="images/pipeline-optimization.png" alt="Pipeline Optimization" style="width:100%; border-radius:8px; margin-bottom:1rem;">
+      <h3>Pipeline Optimization</h3>
+      <p>Audit and optimize existing pipelines to reduce build times, costs, and improve reliability.</p>
+    </div>
   </div>
 </section>
-
-<!-- FOOTER -->
-<footer>
-  © 2026 Rajasekhar – Mobile Deployment Specialist
-</footer>
-
-</body>
-</html>
